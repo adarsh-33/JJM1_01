@@ -65,6 +65,7 @@ websockets==10.3
 win-unicode-console==0.5
 wincertstore==0.2
 wrapt==1.12.1
+export INSTALL_ON_LINUX=1
 xlwings==0.24.9
 yarg==0.1.9
 zict==2.0.0
