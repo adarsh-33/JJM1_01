@@ -18,3 +18,5 @@ voila==0.3.6
 webencodings==0.5.1
 websockets==10.3
 win-unicode-console==0.5
+ipyfilechooser==0.6.0
+openpyxl==3.0.10
