@@ -20,5 +20,6 @@ websockets==10.3
 win-unicode-console==0.5
 ipyfilechooser==0.6.0
 openpyxl==3.0.10
+et-xmlfile==1.1.0
 xlwings==0.24.9
 tk==0.1.0
