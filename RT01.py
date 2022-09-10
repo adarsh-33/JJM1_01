@@ -10,6 +10,7 @@ Completed on Wed Sep 7 8:30:05 2022
 import sys
 import subprocess
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'openpyxl'])
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'xlsxwriter'])
 import os 
 import time, sys
 import pandas as pd
