@@ -7,7 +7,9 @@ Completed on Wed Sep 7 8:30:05 2022
 """
 # In[1]:
 
-!pip install openpyxl
+import sys
+import subprocess
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'openpyxl'])
 import os 
 import time, sys
 import pandas as pd
