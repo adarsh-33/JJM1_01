@@ -12,7 +12,7 @@ import os
 import time, sys
 import pandas as pd
 from IPython.display import display
-from ipyfilechooser import FileChooser
+#from ipyfilechooser import FileChooser
 from IPython.display import clear_output
 # Import `load_workbook` module from `openpyxl`
 from openpyxl import load_workbook
