@@ -21,3 +21,4 @@ win-unicode-console==0.5
 ipyfilechooser==0.6.0
 openpyxl==3.0.10
 xlwings==0.24.9
+tk==0.1.0
