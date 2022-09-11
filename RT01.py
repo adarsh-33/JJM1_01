@@ -10,11 +10,11 @@ Completed on Wed Sep 7 8:30:05 2022
 import sys
 import os 
 import subprocess
-#from subprocess import STDOUT, check_call
+from subprocess import STDOUT, check_call
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'openpyxl'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'xlsxwriter'])
-#subprocess.check_call([sys.executable, '-y', 'apt-get', 'install', 'python-tk'])
-#check_call(['apt-get', 'install', '-y', 'python-tk'], stdout=open(os.devnull,'wb'), stderr=STDOUT) 
+#subprocess.check_call([sys.executable, '-y', 'sudo apt-get', 'install', 'python-tk'])
+check_call(['sudo apt-get', 'install', '-y', 'python-tk'], stdout=open(os.devnull,'wb'), stderr=STDOUT) 
 import time, sys
 import pandas as pd
 from IPython.display import display
