@@ -26,8 +26,8 @@ from IPython.display import clear_output
 from openpyxl import load_workbook
 import xlsxwriter
 import re
-from tkinter import Tk     # from tkinter import Tk for Python 3.x
-from tkinter.filedialog import askopenfilename, askdirectory
+# from tkinter import Tk     # from tkinter import Tk for Python 3.x
+# from tkinter.filedialog import askopenfilename, askdirectory
 import datetime
 # In[2]:
 
