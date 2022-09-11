@@ -134,7 +134,7 @@ for fc1 in uploaded_files:
 # In[8]:
 
 
-uploaded_file = st.file_uploader("Select the EAT11.xlsx File")
+fc2 = st.file_uploader("Select the EAT11.xlsx File")
 if fc2 is not None:
     ## Reading EAT11.xlsx File
     #file_path2=fc2.selected
