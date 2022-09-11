@@ -15,7 +15,7 @@ subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'openpyxl'])
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'xlsxwriter'])
 #subprocess.check_call([sys.executable, '-y', 'sudo apt-get', 'install', 'python-tk'])
 #check_call(['apt-get', 'install', '-y', 'python-tk'], stdout=open(os.devnull,'wb'), stderr=STDOUT) 
-os.system('echo %s|sudo -S %s' % ('mypass', 'apt-get -y install python3-tk'))
+os.system('echo %s|sudo -S %s' % ('mypass', 'apt-get -y install python3.9-tk'))
 import time, sys
 import pandas as pd
 from IPython.display import display
