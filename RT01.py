@@ -33,7 +33,10 @@ import datetime
 
 
 # Retrieve current working directory (`cwd`)
-cwd = os.getcwd()
+#cwd = os.getcwd()
+# sheet_ep04 = list()
+# sheet2 = None
+# sheet_eat02 = list()
 
 
 # In[3]:
@@ -57,138 +60,87 @@ def update_progress(progress,n):
     print(text)
 
 
-# In[4]:
-
-# Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-# fc1 = askdirectory(title='Select the Directory for EAT02.xlsx Files',initialdir=cwd)
-# fc2 = askopenfilename(title='Select the EAT11.xlsx File', filetypes =[('Excel File', '*.xlsx')],initialdir=cwd)
-# fc3 = askdirectory(title='Select the Directory for EP04.xlsx Files',initialdir=cwd)
-# print("FC1",fc1)
-# print("FC2",fc2)
-# print("FC2",fc3)
-
-# # Selecting the Directory fir EAT02 files
-# # Create and display a FileChooser widget and Switch to folder-only mode
-# fc1 = FileChooser(cwd)
-# fc1.title = '<b>Select the Directory for EAT02.xlsx Files</b>'
-# fc1.show_only_dirs = True
-# display(fc1)
-
-
-# In[5]:
-
-
-# Create and display a FileChooser widget
-# fc2 = FileChooser(cwd)
-# fc2.title = '<b>Select the EAT11.xlsx File</b>'
-# fc2.filter_pattern = '*.xlsx'
-
-#fc1.reset(path="C:/Users/")
-#fc2.reset(path="C:/Users/")
-#fc3.reset(path="C:/Users/")
-
-#display(fc2)
-
-
-# In[6]:
-
-
-# Selecting the Directory fir EAT02 files
-# Create and display a FileChooser widget and Switch to folder-only mode
-# print ("Select the Directory for EP04 xlsx Files")
-# fc3 = FileChooser(cwd)
-# fc3.title = '<b>Select the Directory for EP04.xlsx Files</b>'
-# fc3.show_only_dirs = True
-# display(fc3)
-
-
-# In[7]:
-
-uploaded_files = st.file_uploader("Select the EAT02.xlsx Files", type=".xlsx", accept_multiple_files=True)
-cnt_eat02=0
-sheet_eat02 = list()
-for x in uploaded_files:
-## Reading all the EAT02.xlsx Files
-#dir_path1 = os.listdir(fc1.selected)
-#for x in os.listdir(fc1.selected):
-#for x in os.listdir(fc1):
-#if x.endswith(".xlsx"):
-    cnt_eat02+=1
-    #print(fc1.selected+x)
-
-    number_of_elements = 10
-    for i in range(number_of_elements):
-        # Load in the workbook
-        update_progress(i / number_of_elements,x.name)
-        wb1 = load_workbook(x)
-        #wb1 = load_workbook(fc1+"/"+x)
-        #wb1 = load_workbook(fc1.selected+x)
-
-    update_progress(1,x.name)
-
-    st1=wb1.sheetnames[0]
-    sheet_eat02.append(wb1[st1])    
-
-print(str(cnt_eat02)+" EAT02 Files Read.")
-
-
-# In[8]:
-
+uploaded_files1 = st.file_uploader("Select the EAT02.xlsx Files", type=".xlsx", accept_multiple_files=True)
 
 fc2 = st.file_uploader("Select the EAT11.xlsx File", type=".xlsx")
-if fc2 is not None:
-    ## Reading EAT11.xlsx File
-    #file_path2=fc2.selected
-    #file_path2=fc2
-    number_of_elements = 10
-    for i in range(number_of_elements):
-        # Load in the workbook
-        #update_progress(i / number_of_elements,fc2.selected_filename)
-        update_progress(i / number_of_elements,fc2.name)
-        wb2 = load_workbook(f2)
 
-    #update_progress(1,fc2.selected_filename)
-    update_progress(1,fc2.name)
+uploaded_files3 = st.file_uploader("Select the EP04.xlsx Files", type=".xlsx", accept_multiple_files=True)
 
-    st2=wb2.sheetnames[0]
-    sheet2 = wb2[st2]
-
-
-# In[9]:
-
-
-uploaded_files = st.file_uploader("Select the EP04.xlsx Files", type=".xlsx", accept_multiple_files=True)
-cnt_ep04=0
-sheet_ep04 = list()
-for x in uploaded_files:
-## Reading all the EP04.xlsx Files
-#dir_path1 = os.listdir(fc3.selected)
-#for x in os.listdir(fc3.selected):
-#for x in os.listdir(fc3):
-#if x.endswith(".xlsx"):
-    cnt_ep04+=1
-    number_of_elements = 10
-    for i in range(number_of_elements):
-        # Load in the workbook
-        update_progress(i / number_of_elements,x.name)
-        #wb1 = load_workbook(fc3.selected+x)
-        wb1 = load_workbook(x)
-        #wb1 = load_workbook(fc3+"/"+x)
-
-    update_progress(1,x.name)
-
-    st1=wb1.sheetnames[0]
-    sheet_ep04.append(wb1[st1])    
-
-print(str(cnt_ep04)+" EP04 Files Read.")
-
-
-# In[11]:
 ###########################################################################################################################################################
 def gen():
-    global sheet_eat02
-    global sheet2
-    global sheet_ep04
+#     global sheet_eat02
+#     global sheet2
+#     global sheet_ep04
+    global uploaded_files1
+    global fc2
+    global uploaded_files3
+
+    cnt_eat02=0
+    sheet_eat02 = list()
+    ## Reading all the EAT02.xlsx Files
+    for x in uploaded_files1:
+        cnt_eat02+=1
+        #print(fc1.selected+x)
+
+        number_of_elements = 10
+        for i in range(number_of_elements):
+            # Load in the workbook
+            update_progress(i / number_of_elements,x.name)
+            wb1 = load_workbook(x)
+            #wb1 = load_workbook(fc1+"/"+x)
+            #wb1 = load_workbook(fc1.selected+x)
+
+        update_progress(1,x.name)
+
+        st1=wb1.sheetnames[0]
+        sheet_eat02.append(wb1[st1])    
+
+    print(str(cnt_eat02)+" EAT02 Files Read.")
+
+    ## Reading all the EAT11.xlsx Files
+    if fc2 is not None:
+        ## Reading EAT11.xlsx File
+        #file_path2=fc2.selected
+        #file_path2=fc2
+        number_of_elements = 10
+        for i in range(number_of_elements):
+            # Load in the workbook
+            #update_progress(i / number_of_elements,fc2.selected_filename)
+            update_progress(i / number_of_elements,fc2.name)
+            wb2 = load_workbook(f2)
+
+        #update_progress(1,fc2.selected_filename)
+        update_progress(1,fc2.name)
+
+        st2=wb2.sheetnames[0]
+        sheet2 = wb2[st2]
+        
+    ## Reading all the EAT11.xlsx Files
+    cnt_ep04=0
+    sheet_ep04 = list()
+    for x in uploaded_files:
+    ## Reading all the EP04.xlsx Files
+    #dir_path1 = os.listdir(fc3.selected)
+    #for x in os.listdir(fc3.selected):
+    #for x in os.listdir(fc3):
+    #if x.endswith(".xlsx"):
+        cnt_ep04+=1
+        number_of_elements = 10
+        for i in range(number_of_elements):
+            # Load in the workbook
+            update_progress(i / number_of_elements,x.name)
+            #wb1 = load_workbook(fc3.selected+x)
+            wb1 = load_workbook(x)
+            #wb1 = load_workbook(fc3+"/"+x)
+
+        update_progress(1,x.name)
+
+        st1=wb1.sheetnames[0]
+        sheet_ep04.append(wb1[st1])    
+
+    print(str(cnt_ep04)+" EP04 Files Read.")
+
+
     ##Extracting columns from EAT11 xlsx
 
     ## 1)  'Office order no' ROW -> eat11_oford_row
@@ -704,7 +656,7 @@ def gen():
 
 
     time = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-    name = 'JJM_Report %s.xlsx' % (time)
+    name = 'Downloads\JJM_Report %s.xlsx' % (time)
     with xlsxwriter.Workbook(name) as workbook:
         worksheet = workbook.add_worksheet()
         #cell_format0 = workbook.add_format({'bold': True, 'font_size': 11,'align': 'center'})
