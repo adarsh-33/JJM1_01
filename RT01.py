@@ -6,9 +6,8 @@ Completed on Wed Sep 7 8:30:05 2022
 @author: AdarshPradhan
 """
 # In[1]:
-export DISPLAY=0.0
-xhost +
 
+import streamlit as st
 import sys
 import os 
 import subprocess
@@ -60,13 +59,13 @@ def update_progress(progress,n):
 
 # In[4]:
 
-Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-fc1 = askdirectory(title='Select the Directory for EAT02.xlsx Files',initialdir=cwd)
-fc2 = askopenfilename(title='Select the EAT11.xlsx File', filetypes =[('Excel File', '*.xlsx')],initialdir=cwd)
-fc3 = askdirectory(title='Select the Directory for EP04.xlsx Files',initialdir=cwd)
-print("FC1",fc1)
-print("FC2",fc2)
-print("FC2",fc3)
+# Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+# fc1 = askdirectory(title='Select the Directory for EAT02.xlsx Files',initialdir=cwd)
+# fc2 = askopenfilename(title='Select the EAT11.xlsx File', filetypes =[('Excel File', '*.xlsx')],initialdir=cwd)
+# fc3 = askdirectory(title='Select the Directory for EP04.xlsx Files',initialdir=cwd)
+# print("FC1",fc1)
+# print("FC2",fc2)
+# print("FC2",fc3)
 
 # # Selecting the Directory fir EAT02 files
 # # Create and display a FileChooser widget and Switch to folder-only mode
@@ -105,76 +104,81 @@ print("FC2",fc3)
 
 # In[7]:
 
+uploaded_files = st.file_uploader("Select the EAT02.xlsx Files", accept_multiple_files=True)
+for fc1 in uploaded_files:
+    ## Reading all the EAT02.xlsx Files
+    cnt_eat02=0
+    sheet_eat02 = list()
+    #dir_path1 = os.listdir(fc1.selected)
+    #for x in os.listdir(fc1.selected):
+    for x in os.listdir(fc1):
+        if x.endswith(".xlsx"):
+            cnt_eat02+=1
+            #print(fc1.selected+x)
 
-## Reading all the EAT02.xlsx Files
-cnt_eat02=0
-sheet_eat02 = list()
-#dir_path1 = os.listdir(fc1.selected)
-#for x in os.listdir(fc1.selected):
-for x in os.listdir(fc1):
-    if x.endswith(".xlsx"):
-        cnt_eat02+=1
-        #print(fc1.selected+x)
+            number_of_elements = 10
+            for i in range(number_of_elements):
+                # Load in the workbook
+                update_progress(i / number_of_elements,x)
+                wb1 = load_workbook(fc1+"/"+x)
+                #wb1 = load_workbook(fc1.selected+x)
 
-        number_of_elements = 10
-        for i in range(number_of_elements):
-            # Load in the workbook
-            update_progress(i / number_of_elements,x)
-            wb1 = load_workbook(fc1+"/"+x)
-            #wb1 = load_workbook(fc1.selected+x)
+            update_progress(1,x)
 
-        update_progress(1,x)
+            st1=wb1.sheetnames[0]
+            sheet_eat02.append(wb1[st1])    
 
-        st1=wb1.sheetnames[0]
-        sheet_eat02.append(wb1[st1])    
-
-print(str(cnt_eat02)+" EAT02 Files Read.")
+    print(str(cnt_eat02)+" EAT02 Files Read.")
 
 
 # In[8]:
 
 
-## Reading EAT11.xlsx File
-#file_path2=fc2.selected
-file_path2=fc2
-number_of_elements = 10
-for i in range(number_of_elements):
-    # Load in the workbook
-    #update_progress(i / number_of_elements,fc2.selected_filename)
-    update_progress(i / number_of_elements,fc2)
-    wb2 = load_workbook(file_path2)
+uploaded_file = st.file_uploader("Select the EAT11.xlsx File")
+if fc2 is not None:
+    ## Reading EAT11.xlsx File
+    #file_path2=fc2.selected
+    file_path2=fc2
+    number_of_elements = 10
+    for i in range(number_of_elements):
+        # Load in the workbook
+        #update_progress(i / number_of_elements,fc2.selected_filename)
+        update_progress(i / number_of_elements,fc2)
+        wb2 = load_workbook(file_path2)
 
-#update_progress(1,fc2.selected_filename)
-update_progress(1,fc2)
+    #update_progress(1,fc2.selected_filename)
+    update_progress(1,fc2)
 
-st2=wb2.sheetnames[0]
-sheet2 = wb2[st2]
+    st2=wb2.sheetnames[0]
+    sheet2 = wb2[st2]
 
 
 # In[9]:
 
 
-## Reading all the EP04.xlsx Files
-cnt_ep04=0
-sheet_ep04 = list()
-#dir_path1 = os.listdir(fc3.selected)
-#for x in os.listdir(fc3.selected):
-for x in os.listdir(fc3):
-    if x.endswith(".xlsx"):
-        cnt_ep04+=1
-        number_of_elements = 10
-        for i in range(number_of_elements):
-            # Load in the workbook
-            update_progress(i / number_of_elements,x)
-            #wb1 = load_workbook(fc3.selected+x)
-            wb1 = load_workbook(fc3+"/"+x)
+uploaded_files = st.file_uploader("Select the EP04.xlsx Files", accept_multiple_files=True)
+for fc3 in uploaded_files:
+    ## Reading all the EP04.xlsx Files
+    cnt_ep04=0
+    sheet_ep04 = list()
+    #dir_path1 = os.listdir(fc3.selected)
+    #for x in os.listdir(fc3.selected):
+    for x in os.listdir(fc3):
+        if x.endswith(".xlsx"):
+            cnt_ep04+=1
+            number_of_elements = 10
+            for i in range(number_of_elements):
+                # Load in the workbook
+                update_progress(i / number_of_elements,x)
+                #wb1 = load_workbook(fc3.selected+x)
+                wb1 = load_workbook(fc3+"/"+x)
 
-        update_progress(1,x)
+            update_progress(1,x)
 
-        st1=wb1.sheetnames[0]
-        sheet_ep04.append(wb1[st1])    
+            st1=wb1.sheetnames[0]
+            sheet_ep04.append(wb1[st1])    
 
-print(str(cnt_ep04)+" EP04 Files Read.")
+    print(str(cnt_ep04)+" EP04 Files Read.")
 
 
 # In[11]:
