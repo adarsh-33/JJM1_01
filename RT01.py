@@ -119,12 +119,12 @@ for x in uploaded_files:
     number_of_elements = 10
     for i in range(number_of_elements):
         # Load in the workbook
-        update_progress(i / number_of_elements,x)
+        update_progress(i / number_of_elements,x.name)
         wb1 = load_workbook(x)
         #wb1 = load_workbook(fc1+"/"+x)
         #wb1 = load_workbook(fc1.selected+x)
 
-    update_progress(1,x)
+    update_progress(1,x.name)
 
     st1=wb1.sheetnames[0]
     sheet_eat02.append(wb1[st1])    
@@ -144,11 +144,11 @@ if fc2 is not None:
     for i in range(number_of_elements):
         # Load in the workbook
         #update_progress(i / number_of_elements,fc2.selected_filename)
-        update_progress(i / number_of_elements,fc2)
+        update_progress(i / number_of_elements,fc2.name)
         wb2 = load_workbook(f2)
 
     #update_progress(1,fc2.selected_filename)
-    update_progress(1,fc2)
+    update_progress(1,fc2.name)
 
     st2=wb2.sheetnames[0]
     sheet2 = wb2[st2]
@@ -170,12 +170,12 @@ for x in uploaded_files:
     number_of_elements = 10
     for i in range(number_of_elements):
         # Load in the workbook
-        update_progress(i / number_of_elements,x)
+        update_progress(i / number_of_elements,x.name)
         #wb1 = load_workbook(fc3.selected+x)
         wb1 = load_workbook(x)
         #wb1 = load_workbook(fc3+"/"+x)
 
-    update_progress(1,x)
+    update_progress(1,x.name)
 
     st1=wb1.sheetnames[0]
     sheet_ep04.append(wb1[st1])    
