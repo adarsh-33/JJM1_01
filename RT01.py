@@ -7,7 +7,6 @@ Completed on Wed Sep 7 8:30:05 2022
 """
 # In[1]:
 
-export STREAMLIT_MAX_UPLOAD_SIZE=11000
 import streamlit as st
 import sys
 import os 
