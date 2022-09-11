@@ -104,7 +104,7 @@ def update_progress(progress,n):
 
 # In[7]:
 
-uploaded_files = st.file_uploader("Select the EAT02.xlsx Files", type=".xlsx", help="Max Size 500 MB", accept_multiple_files=True)
+uploaded_files = st.file_uploader("Select the EAT02.xlsx Files", type=".xlsx", accept_multiple_files=True)
 cnt_eat02=0
 sheet_eat02 = list()
 for x in uploaded_files:
@@ -135,7 +135,7 @@ print(str(cnt_eat02)+" EAT02 Files Read.")
 # In[8]:
 
 
-fc2 = st.file_uploader("Select the EAT11.xlsx File", help="Max Size 500 MB", type=".xlsx")
+fc2 = st.file_uploader("Select the EAT11.xlsx File", type=".xlsx")
 if fc2 is not None:
     ## Reading EAT11.xlsx File
     #file_path2=fc2.selected
@@ -157,7 +157,7 @@ if fc2 is not None:
 # In[9]:
 
 
-uploaded_files = st.file_uploader("Select the EP04.xlsx Files", help="Max Size 500 MB", type=".xlsx", accept_multiple_files=True)
+uploaded_files = st.file_uploader("Select the EP04.xlsx Files", type=".xlsx", accept_multiple_files=True)
 cnt_ep04=0
 sheet_ep04 = list()
 for x in uploaded_files:
