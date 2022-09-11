@@ -6,6 +6,8 @@ Completed on Wed Sep 7 8:30:05 2022
 @author: AdarshPradhan
 """
 # In[1]:
+export DISPLAY=0.0
+xhost +
 
 import sys
 import os 
@@ -28,8 +30,6 @@ import re
 from tkinter import Tk     # from tkinter import Tk for Python 3.x
 from tkinter.filedialog import askopenfilename, askdirectory
 import datetime
-export DISPLAY=0.0
-xhost +
 # In[2]:
 
 
